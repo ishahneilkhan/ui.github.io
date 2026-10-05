@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
 
-  <title>Website Deals | Live Website Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Website Deals | Premium Website Marketplace</title>
 
   <meta
     name="description"
-    content="Website Deals — Live website showcase and premium client presentation wall."
-  />
+    content="Website Deals — Premium ready-made websites, live website showcase and monthly website packages."
+  >
 
-  <meta name="theme-color" content="#080909" />
+  <meta name="theme-color" content="#080909">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
-  />
+  >
 
   <style>
+    /* =========================================================
+       WEBSITE DEALS
+       ULTRA PREMIUM LIVE MARKETING WALL
+       FILE: package/index.html
+       ========================================================= */
+
     :root {
       --bg: #080909;
-      --bg-soft: #101212;
-      --card: #111414;
-      --card-2: #151919;
-      --text: #f5f7f6;
-      --muted: #9aa3a0;
-      --line: rgba(255,255,255,.09);
+      --bg-soft: #0d0f10;
+      --surface: #111415;
+      --surface-2: #151819;
+      --surface-3: #1a1d1e;
+
+      --text: #f7f8f6;
+      --muted: #9ba19d;
+      --muted-2: #69716d;
+
       --lime: #b7ff00;
       --lime-soft: rgba(183,255,0,.12);
-      --green: #4ade80;
-      --danger: #ff5c5c;
-      --shadow: 0 30px 100px rgba(0,0,0,.45);
-      --radius: 28px;
+      --lime-border: rgba(183,255,0,.24);
+
+      --white-border: rgba(255,255,255,.08);
+      --white-border-2: rgba(255,255,255,.14);
+
+      --shadow:
+        0 30px 100px rgba(0,0,0,.42);
+
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+
+      --container: 1440px;
+
+      --transition:
+        260ms cubic-bezier(.2,.8,.2,1);
     }
 
     * {
@@ -46,27 +68,50 @@
 
     html {
       scroll-behavior: smooth;
+      background: var(--bg);
     }
 
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 15% 10%, rgba(183,255,0,.07), transparent 28%),
-        radial-gradient(circle at 85% 25%, rgba(80,255,170,.045), transparent 25%),
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(183,255,0,.08),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 12%,
+          rgba(255,255,255,.035),
+          transparent 25%
+        ),
         var(--bg);
+
       color: var(--text);
-      font-family: Inter, "Hind Siliguri", sans-serif;
+      font-family: "Inter", sans-serif;
       overflow-x: hidden;
     }
 
-    button,
-    input,
-    select {
-      font: inherit;
-    }
+    body.light {
+      --bg: #f5f7f4;
+      --bg-soft: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f0f3ef;
+      --surface-3: #e8ece8;
 
-    button {
-      cursor: pointer;
+      --text: #111412;
+      --muted: #626a65;
+      --muted-2: #7b827e;
+
+      --white-border: rgba(0,0,0,.08);
+      --white-border-2: rgba(0,0,0,.13);
+
+      background:
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(183,255,0,.13),
+          transparent 28%
+        ),
+        var(--bg);
     }
 
     a {
@@ -74,161 +119,100 @@
       text-decoration: none;
     }
 
-    /* =========================
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    ::selection {
+      background: var(--lime);
+      color: #080909;
+    }
+
+    /* =========================================================
        BACKGROUND
-    ========================= */
+       ========================================================= */
 
     .ambient {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      overflow: hidden;
       z-index: -1;
+      overflow: hidden;
     }
 
     .ambient::before,
     .ambient::after {
       content: "";
       position: absolute;
-      width: 420px;
-      height: 420px;
+      width: 500px;
+      height: 500px;
       border-radius: 50%;
       filter: blur(100px);
-      opacity: .08;
+      opacity: .07;
     }
 
     .ambient::before {
       top: -180px;
-      left: -100px;
+      left: -150px;
       background: var(--lime);
     }
 
     .ambient::after {
-      right: -140px;
-      bottom: -180px;
-      background: #5eead4;
+      right: -180px;
+      top: 25%;
+      background: #ffffff;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--line);
-      background: rgba(8,9,9,.82);
-      backdrop-filter: blur(22px);
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      opacity: .035;
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.3) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.3) 1px,
+          transparent 1px
+        );
+      background-size: 50px 50px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+      );
     }
 
-    .nav {
-      width: min(1400px, calc(100% - 36px));
-      min-height: 76px;
-      margin: auto;
+    /* =========================================================
+       COMMON
+       ========================================================= */
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--container)
+      );
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-head {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 13px;
-      background: var(--lime);
-      color: #080909;
-      font-weight: 900;
-      box-shadow: 0 0 35px rgba(183,255,0,.16);
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 15px;
-      letter-spacing: -.02em;
-    }
-
-    .brand-text span {
-      display: block;
-      margin-top: 2px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .clock {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 13px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .live-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 12px rgba(74,222,128,.8);
-      animation: pulse 1.7s infinite;
-    }
-
-    @keyframes pulse {
-      0%,100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(.65);
-        opacity: .55;
-      }
-    }
-
-    .icon-btn {
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: rgba(255,255,255,.025);
-      color: var(--text);
-      transition: .25s ease;
-    }
-
-    .icon-btn:hover {
-      border-color: rgba(183,255,0,.35);
-      background: var(--lime-soft);
-      color: var(--lime);
-      transform: translateY(-2px);
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      width: min(1400px, calc(100% - 36px));
-      margin: auto;
-      padding: 85px 0 45px;
-      display: grid;
-      grid-template-columns: 1.25fr .75fr;
       align-items: end;
-      gap: 50px;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 42px;
     }
 
     .eyebrow {
@@ -236,486 +220,970 @@
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
-      border: 1px solid rgba(183,255,0,.18);
-      background: rgba(183,255,0,.06);
-      border-radius: 999px;
+      border: 1px solid var(--lime-border);
+      background: var(--lime-soft);
       color: var(--lime);
+      border-radius: 999px;
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 900px;
-      margin-top: 20px;
-      font-size: clamp(48px, 7vw, 96px);
-      line-height: .91;
-      letter-spacing: -.065em;
-    }
-
-    h1 span {
-      color: var(--lime);
-    }
-
-    .hero-copy {
-      max-width: 650px;
-      margin-top: 24px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .hero-side {
-      padding-bottom: 8px;
-    }
-
-    .hero-side-card {
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(255,255,255,.025);
-    }
-
-    .hero-side-card small {
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
       letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
     }
 
-    .hero-side-card strong {
-      display: block;
-      margin-top: 10px;
-      font-size: 25px;
-      letter-spacing: -.04em;
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 14px var(--lime);
+      animation: pulse 1.8s infinite;
     }
 
-    .hero-side-card p {
-      margin-top: 8px;
+    @keyframes pulse {
+      0%,100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(.65);
+        opacity: .45;
+      }
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(36px, 5vw, 68px);
+      line-height: .96;
+      letter-spacing: -.055em;
+      max-width: 760px;
+    }
+
+    .section-description {
       color: var(--muted);
+      line-height: 1.8;
+      max-width: 560px;
+      margin-top: 18px;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--white-border-2);
+      background: rgba(255,255,255,.035);
+      color: var(--text);
       font-size: 13px;
-      line-height: 1.6;
+      font-weight: 800;
+      transition: var(--transition);
+      white-space: nowrap;
     }
 
-    /* =========================
-       FILTER BAR
-    ========================= */
-
-    .showcase {
-      width: min(1400px, calc(100% - 36px));
-      margin: auto;
-      padding-bottom: 100px;
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--lime-border);
+      background: var(--lime-soft);
     }
 
-    .section-bar {
+    .btn-primary {
+      background: var(--lime);
+      color: #080909;
+      border-color: var(--lime);
+      box-shadow:
+        0 12px 35px rgba(183,255,0,.16);
+    }
+
+    .btn-primary:hover {
+      background: #c5ff33;
+      border-color: #c5ff33;
+      box-shadow:
+        0 18px 45px rgba(183,255,0,.24);
+    }
+
+    .btn-small {
+      min-height: 42px;
+      padding: 0 15px;
+      font-size: 12px;
+    }
+
+    /* =========================================================
+       SALAH BAR — ABOVE NAVBAR
+       ========================================================= */
+
+    .salah-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      border-bottom: 1px solid var(--white-border);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(183,255,0,.055),
+          rgba(255,255,255,.025),
+          rgba(183,255,0,.035)
+        );
+
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+
+    .salah-inner {
+      min-height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      margin-bottom: 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
 
-    .section-title h2 {
-      font-size: 25px;
-      letter-spacing: -.04em;
+    .salah-inner::-webkit-scrollbar {
+      display: none;
     }
 
-    .section-title p {
-      margin-top: 5px;
+    .salah-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .salah-brand span:first-child {
+      font-size: 18px;
+    }
+
+    .prayer-list {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-shrink: 0;
+    }
+
+    .prayer {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .prayer strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .prayer.active {
+      border-color: var(--lime-border);
+      background: var(--lime-soft);
+      color: var(--lime);
+    }
+
+    .prayer.active strong {
+      color: var(--lime);
+    }
+
+    /* =========================================================
+       NAVBAR
+       ========================================================= */
+
+    .navbar {
+      position: sticky;
+      top: 48px;
+      z-index: 990;
+
+      border-bottom: 1px solid var(--white-border);
+
+      background:
+        rgba(8,9,9,.76);
+
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+    }
+
+    body.light .navbar {
+      background: rgba(245,247,244,.82);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--lime);
+      color: #080909;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 17px;
+      font-weight: 900;
+      box-shadow: 0 0 30px rgba(183,255,0,.12);
+    }
+
+    .logo-text strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 15px;
+      letter-spacing: -.03em;
+    }
+
+    .logo-text small {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-link {
+      padding: 10px 13px;
+      border-radius: 999px;
       color: var(--muted);
       font-size: 12px;
+      font-weight: 700;
+      transition: var(--transition);
     }
 
-    .filters {
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text);
+      background: rgba(255,255,255,.055);
+    }
+
+    .nav-actions {
       display: flex;
+      align-items: center;
       gap: 7px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--white-border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--lime-border);
+      color: var(--lime);
+    }
+
+    .mobile-toggle {
+      display: none;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      min-height: calc(100vh - 124px);
+      display: flex;
+      align-items: center;
+      padding: 80px 0 100px;
+      position: relative;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(54px, 7vw, 105px);
+      line-height: .87;
+      letter-spacing: -.075em;
+      max-width: 900px;
+    }
+
+    .hero-title .lime {
+      color: var(--lime);
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 610px;
+      margin: 28px 0 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
-    .filter {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.025);
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-size: 12px;
-      transition: .2s ease;
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 40px;
     }
 
-    .filter:hover,
-    .filter.active {
-      color: #080909;
-      border-color: var(--lime);
+    .stat {
+      padding: 14px 17px;
+      border: 1px solid var(--white-border);
+      background: rgba(255,255,255,.025);
+      border-radius: 16px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      letter-spacing: -.04em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    /* Hero visual */
+
+    .hero-stage {
+      position: relative;
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: var(--lime);
+      opacity: .06;
+      filter: blur(80px);
+    }
+
+    .browser {
+      width: min(100%, 560px);
+      position: relative;
+      border: 1px solid var(--white-border-2);
+      border-radius: 26px;
+      background: #101213;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: rotate(2deg);
+      animation: heroFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat {
+      0%,100% {
+        transform: translateY(0) rotate(2deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(1deg);
+      }
+    }
+
+    .browser-top {
+      height: 45px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 15px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      background: #17191a;
+    }
+
+    .browser-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4b514e;
+    }
+
+    .browser-url {
+      flex: 1;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      margin-left: 7px;
+      border-radius: 8px;
+      background: #0c0e0f;
+      color: #737b77;
+      font-size: 9px;
+    }
+
+    .browser-screen {
+      height: 390px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          135deg,
+          #111,
+          #202523
+        );
+    }
+
+    .fake-site {
+      position: absolute;
+      inset: 0;
+      padding: 35px;
+    }
+
+    .fake-nav {
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .fake-logo {
+      width: 90px;
+      height: 10px;
+      border-radius: 10px;
       background: var(--lime);
     }
 
-    /* =========================
-       WEBSITE GRID
-    ========================= */
+    .fake-nav-items {
+      display: flex;
+      gap: 7px;
+    }
 
-    .website-grid {
+    .fake-nav-items span {
+      width: 35px;
+      height: 6px;
+      border-radius: 5px;
+      background: rgba(255,255,255,.15);
+    }
+
+    .fake-hero {
+      margin-top: 70px;
+      max-width: 340px;
+    }
+
+    .fake-hero .line {
+      height: 14px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.82);
+      margin-bottom: 10px;
+    }
+
+    .fake-hero .line:nth-child(1) {
+      width: 100%;
+    }
+
+    .fake-hero .line:nth-child(2) {
+      width: 75%;
+    }
+
+    .fake-hero .line:nth-child(3) {
+      width: 52%;
+      background: var(--lime);
+    }
+
+    .fake-button {
+      width: 110px;
+      height: 35px;
+      margin-top: 22px;
+      border-radius: 9px;
+      background: var(--lime);
+    }
+
+    .fake-card-row {
+      display: flex;
+      gap: 12px;
+      position: absolute;
+      bottom: 30px;
+      left: 35px;
+      right: 35px;
+    }
+
+    .fake-card {
+      flex: 1;
+      height: 85px;
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.05);
+    }
+
+    .hero-badge {
+      position: absolute;
+      right: -15px;
+      bottom: 50px;
+      padding: 15px 17px;
+      border: 1px solid var(--lime-border);
+      border-radius: 18px;
+      background: rgba(13,15,15,.85);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-badge strong {
+      display: block;
+      color: var(--lime);
+      font-size: 13px;
+    }
+
+    .hero-badge span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 4px;
+    }
+
+    /* =========================================================
+       PACKAGE CARDS
+       ========================================================= */
+
+    .package-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .package-card {
+      position: relative;
+      padding: 30px;
+      border: 1px solid var(--white-border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.015)
+        );
+      transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .package-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -80px;
+      top: -80px;
+      border-radius: 50%;
+      background: var(--lime);
+      opacity: .035;
+      filter: blur(35px);
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--lime-border);
+      box-shadow: 0 25px 70px rgba(0,0,0,.3);
+    }
+
+    .package-card.featured {
+      border-color: var(--lime-border);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.085),
+          rgba(255,255,255,.018)
+        );
+    }
+
+    .popular {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .package-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .package-name {
+      margin-top: 9px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 31px;
+      letter-spacing: -.05em;
+    }
+
+    .package-price {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      margin-top: 20px;
+    }
+
+    .package-price strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 48px;
+      letter-spacing: -.06em;
+    }
+
+    .package-price span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .package-description {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 13px;
+      min-height: 65px;
+      margin: 15px 0 22px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: grid;
+      gap: 11px;
+      margin-bottom: 27px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      flex-shrink: 0;
+      color: var(--lime);
+      font-weight: 900;
+    }
+
+    .package-button {
+      width: 100%;
+    }
+
+    /* =========================================================
+       LIVE WEBSITE SHOWCASE
+       ========================================================= */
+
+    .showcase-section {
+      overflow: hidden;
+    }
+
+    .showcase-topline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .live-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #53ff7a;
+      box-shadow: 0 0 15px rgba(83,255,122,.55);
+      animation: pulse 1.5s infinite;
+    }
+
+    .showcase-window {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      overflow: hidden;
+      padding: 10px 0 35px;
+    }
+
+    .showcase-window::before,
+    .showcase-window::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 150px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .showcase-window::before {
+      left: 0;
+      background: linear-gradient(
+        90deg,
+        var(--bg),
+        transparent
+      );
+    }
+
+    .showcase-window::after {
+      right: 0;
+      background: linear-gradient(
+        270deg,
+        var(--bg),
+        transparent
+      );
+    }
+
+    .showcase-track {
+      display: flex;
+      width: max-content;
       gap: 22px;
+      padding: 0 30px;
+      animation: marquee 80s linear infinite;
+      will-change: transform;
+    }
+
+    .showcase-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(
+          calc(-50% - 11px)
+        );
+      }
     }
 
     .website-card {
-      position: relative;
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      width: 430px;
+      flex-shrink: 0;
+      padding: 13px;
+      border: 1px solid var(--white-border);
+      border-radius: 25px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)),
-        var(--card);
-      box-shadow: 0 18px 60px rgba(0,0,0,.22);
-      transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.015)
+        );
+      box-shadow: 0 25px 70px rgba(0,0,0,.25);
+      transition: var(--transition);
     }
 
     .website-card:hover {
       transform: translateY(-7px);
-      border-color: rgba(183,255,0,.25);
-      box-shadow: var(--shadow);
+      border-color: var(--lime-border);
     }
 
-    .preview {
+    .website-preview {
+      height: 275px;
       position: relative;
-      aspect-ratio: 16 / 10;
+      border-radius: 17px;
       overflow: hidden;
-      background: #0d1010;
-      border-bottom: 1px solid var(--line);
+      background: #101212;
+      border: 1px solid rgba(255,255,255,.07);
     }
 
-    .preview::after {
-      content: "";
+    .website-preview iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+      background: #ffffff;
+    }
+
+    .preview-shine {
       position: absolute;
       inset: 0;
       pointer-events: none;
       background:
         linear-gradient(
-          120deg,
-          rgba(255,255,255,.08),
-          transparent 32%,
-          transparent 68%,
-          rgba(183,255,0,.04)
+          115deg,
+          transparent 25%,
+          rgba(255,255,255,.07) 45%,
+          transparent 65%
         );
+      transform: translateX(-120%);
+      animation: shine 5s ease-in-out infinite;
     }
 
-    .browser-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 4;
-      height: 31px;
+    @keyframes shine {
+      0%, 45% {
+        transform: translateX(-120%);
+      }
+
+      75%,100% {
+        transform: translateX(120%);
+      }
+    }
+
+    .website-info {
       display: flex;
       align-items: center;
-      gap: 5px;
-      padding: 0 10px;
-      border-bottom: 1px solid rgba(0,0,0,.12);
-      background: rgba(245,245,245,.94);
+      justify-content: space-between;
+      gap: 15px;
+      padding: 16px 5px 4px;
     }
 
-    .browser-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #bbb;
-    }
-
-    .browser-address {
-      flex: 1;
-      height: 17px;
-      margin-left: 6px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #e8e8e8;
-      color: #666;
-      font-size: 7px;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .website-frame {
-      position: absolute;
-      top: 31px;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 31px);
-      border: 0;
-      background: white;
-      transform-origin: top center;
-    }
-
-    .preview-placeholder {
-      position: absolute;
-      inset: 31px 0 0;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at center, rgba(183,255,0,.09), transparent 38%),
-        #0e1111;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .preview-placeholder strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 7px;
-    }
-
-    .card-content {
-      padding: 18px;
-    }
-
-    .package-badge {
-      display: inline-flex;
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: rgba(183,255,0,.08);
-      color: var(--lime);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .card-title {
-      margin-top: 12px;
-      font-size: 19px;
+    .website-name {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 17px;
       letter-spacing: -.035em;
     }
 
-    .card-url {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 11px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    .website-package {
+      color: var(--lime);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-top: 4px;
     }
 
-    .card-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 17px;
+    .website-actions {
+      display: flex;
+      gap: 6px;
     }
 
-    .btn {
-      min-height: 43px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: rgba(255,255,255,.035);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 12px;
-      transition: .2s ease;
+    .website-actions .btn {
+      min-height: 38px;
+      padding: 0 12px;
+      font-size: 10px;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      border-color: rgba(183,255,0,.35);
-    }
-
-    .btn-primary {
-      border-color: var(--lime);
-      background: var(--lime);
-      color: #080909;
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 12px 35px rgba(183,255,0,.18);
-    }
-
-    /* =========================
-       EMPTY
-    ========================= */
-
-    .empty {
-      display: none;
-      padding: 80px 20px;
-      border: 1px dashed var(--line);
+    .empty-showcase {
+      width: min(
+        calc(100vw - 40px),
+        900px
+      );
+      margin: 0 auto;
+      padding: 60px;
+      border: 1px dashed var(--white-border-2);
       border-radius: 25px;
       text-align: center;
       color: var(--muted);
     }
 
-    .empty strong {
-      display: block;
-      margin-bottom: 7px;
-      color: var(--text);
-    }
-
-    /* =========================
-       PRESENTATION
-    ========================= */
+    /* =========================================================
+       PRESENTATION MODE
+       ========================================================= */
 
     .presentation {
       position: fixed;
       inset: 0;
-      z-index: 9999;
+      z-index: 3000;
       display: none;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(183,255,0,.08), transparent 32%),
-        #050606;
-      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background: rgba(3,4,4,.94);
+      backdrop-filter: blur(25px);
     }
 
     .presentation.open {
-      display: block;
-      animation: presentationIn .45s ease both;
+      display: flex;
     }
 
-    @keyframes presentationIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+    .presentation-box {
+      width: min(1400px, 96vw);
+      height: min(850px, 92vh);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--white-border-2);
+      border-radius: 28px;
+      background: #0b0d0d;
+      overflow: hidden;
+      box-shadow: 0 50px 150px rgba(0,0,0,.7);
     }
 
-    .presentation-top {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 30;
-      height: 76px;
+    .presentation-head {
+      min-height: 62px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 25px;
-      background: linear-gradient(
-        180deg,
-        rgba(0,0,0,.72),
-        transparent
-      );
-      pointer-events: none;
+      gap: 15px;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--white-border);
     }
 
-    .presentation-top > * {
-      pointer-events: auto;
-    }
-
-    .presentation-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .presentation-brand-mark {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: var(--lime);
-      color: #080909;
-      font-weight: 900;
-      font-size: 12px;
-    }
-
-    .presentation-brand-text strong {
+    .presentation-title strong {
       display: block;
-      font-size: 12px;
+      font-size: 13px;
     }
 
-    .presentation-brand-text span {
+    .presentation-title span {
       display: block;
-      margin-top: 2px;
-      color: rgba(255,255,255,.5);
-      font-size: 9px;
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 3px;
     }
 
-    .presentation-controls {
+    .presentation-actions {
       display: flex;
-      align-items: center;
       gap: 7px;
     }
 
-    .presentation-btn {
-      height: 38px;
-      padding: 0 13px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 11px;
-      background: rgba(255,255,255,.055);
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      backdrop-filter: blur(12px);
-      transition: .2s ease;
+    .presentation-frame {
+      flex: 1;
+      background: #ffffff;
     }
 
-    .presentation-btn:hover {
-      background: rgba(255,255,255,.11);
-      border-color: rgba(183,255,0,.4);
-    }
-
-    .presentation-btn.lime {
-      background: var(--lime);
-      color: #080909;
-      border-color: var(--lime);
-    }
-
-    .presentation-stage {
-      position: absolute;
-      inset: 76px 30px 88px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      perspective: 1400px;
-    }
-
-    .desktop-device {
-      position: relative;
-      width: min(1180px, 90vw);
-      aspect-ratio: 16 / 10;
-      padding: 12px 12px 38px;
-      border-radius: 20px;
-      background:
-        linear-gradient(145deg, #252a2a, #0b0d0d);
-      border: 1px solid rgba(255,255,255,.16);
-      box-shadow:
-        0 50px 120px rgba(0,0,0,.72),
-        0 0 0 1px rgba(255,255,255,.03);
-      transform-style: preserve-3d;
-      transition: transform .8s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .desktop-device.scale-in {
-      animation: deviceScale .8s cubic-bezier(.2,.8,.2,1);
-    }
-
-    @keyframes deviceScale {
-      0% {
-        transform: scale(.88) translateY(25px);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .desktop-screen {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      border-radius: 11px;
-      background: white;
-    }
-
-    .desktop-screen iframe {
+    .presentation-frame iframe {
       width: 100%;
       height: 100%;
       border: 0;
@@ -723,281 +1191,486 @@
       background: white;
     }
 
-    .device-camera {
-      position: absolute;
-      top: 5px;
-      left: 50%;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #060707;
-      transform: translateX(-50%);
+    /* =========================================================
+       ABOUT / SERVICE
+       ========================================================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
 
-    .device-bottom {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 150px;
-      height: 23px;
-      transform: translateX(-50%);
+    .about-card {
+      min-height: 340px;
+      padding: 35px;
+      border: 1px solid var(--white-border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.04),
+          rgba(255,255,255,.012)
+        );
+    }
+
+    .about-number {
+      color: var(--lime);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .about-card h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 30px;
+      letter-spacing: -.045em;
+      margin-top: 55px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      margin-top: 15px;
+      max-width: 520px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .service {
+      padding: 22px;
+      border: 1px solid var(--white-border);
+      border-radius: 18px;
+      background: rgba(255,255,255,.02);
+    }
+
+    .service-icon {
+      width: 38px;
+      height: 38px;
       display: grid;
       place-items: center;
-      color: rgba(255,255,255,.18);
-      font-size: 7px;
-      letter-spacing: .12em;
-    }
-
-    .device-stand {
-      position: absolute;
-      left: 50%;
-      bottom: -55px;
-      width: 140px;
-      height: 60px;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg,#0d0f0f,#222626,#0d0f0f);
-      clip-path: polygon(35% 0,65% 0,78% 85%,100% 100%,0 100%,22% 85%);
-      z-index: -1;
-    }
-
-    .presentation-info {
-      position: absolute;
-      left: 30px;
-      right: 30px;
-      bottom: 22px;
-      z-index: 30;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .presentation-site {
-      min-width: 0;
-    }
-
-    .presentation-site small {
-      display: block;
+      border-radius: 12px;
+      background: var(--lime-soft);
       color: var(--lime);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: .13em;
-      text-transform: uppercase;
+      margin-bottom: 20px;
+      font-size: 15px;
     }
 
-    .presentation-site strong {
+    .service strong {
       display: block;
-      margin-top: 4px;
-      font-size: 20px;
-      letter-spacing: -.035em;
+      font-size: 13px;
     }
 
-    .presentation-site span {
+    .service span {
       display: block;
-      margin-top: 3px;
-      max-width: 500px;
-      color: rgba(255,255,255,.4);
-      font-size: 10px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 11px;
+      margin-top: 7px;
     }
 
-    .presentation-progress {
-      display: flex;
-      align-items: center;
-      gap: 9px;
+    /* =========================================================
+       SALAH SECTION
+       ========================================================= */
+
+    .salah-section-card {
+      padding: 35px;
+      border: 1px solid var(--white-border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.055),
+          rgba(255,255,255,.018)
+        );
     }
 
-    .progress-line {
-      width: 130px;
-      height: 3px;
-      overflow: hidden;
-      border-radius: 99px;
-      background: rgba(255,255,255,.12);
+    .salah-grid {
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      gap: 10px;
+      margin-top: 28px;
     }
 
-    .progress-fill {
-      width: 0%;
-      height: 100%;
-      background: var(--lime);
-      transition: width .2s linear;
+    .salah-card {
+      padding: 20px;
+      border: 1px solid var(--white-border);
+      border-radius: 18px;
+      background: rgba(0,0,0,.15);
     }
 
-    .counter {
-      color: rgba(255,255,255,.45);
-      font-size: 10px;
-      white-space: nowrap;
-    }
-
-    /* Presentation transitions */
-
-    .desktop-device.slide-next {
-      animation: slideNext .7s cubic-bezier(.2,.8,.2,1);
-    }
-
-    @keyframes slideNext {
-      0% {
-        opacity: 0;
-        transform: translateX(100px) scale(.96);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-      }
-    }
-
-    .desktop-device.slide-prev {
-      animation: slidePrev .7s cubic-bezier(.2,.8,.2,1);
-    }
-
-    @keyframes slidePrev {
-      0% {
-        opacity: 0;
-        transform: translateX(-100px) scale(.96);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-      }
-    }
-
-    .desktop-device.float-mode {
-      animation: floatDevice 5s ease-in-out infinite;
-    }
-
-    @keyframes floatDevice {
-      0%,100% {
-        transform: translateY(0) rotateX(0deg);
-      }
-      50% {
-        transform: translateY(-8px) rotateX(.4deg);
-      }
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      width: min(1400px, calc(100% - 36px));
-      margin: auto;
-      padding: 30px 0 50px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+    .salah-card span {
+      display: block;
       color: var(--muted);
       font-size: 11px;
     }
 
-    footer strong {
+    .salah-card strong {
+      display: block;
+      margin-top: 8px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 24px;
+      color: var(--lime);
+    }
+
+    /* =========================================================
+       SUPPORT CTA
+       ========================================================= */
+
+    .support {
+      padding: 40px 0 110px;
+    }
+
+    .support-card {
+      position: relative;
+      padding: 65px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid var(--lime-border);
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(183,255,0,.14),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.07),
+          rgba(255,255,255,.025)
+        );
+    }
+
+    .support-card h2 {
+      max-width: 780px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(38px,5vw,68px);
+      line-height: .95;
+      letter-spacing: -.06em;
+    }
+
+    .support-card p {
+      max-width: 600px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 20px 0 28px;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      border-top: 1px solid var(--white-border);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.018),
+          rgba(0,0,0,.15)
+        );
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(3,1fr);
+      gap: 45px;
+      padding: 70px 0;
+    }
+
+    .footer-brand p {
+      max-width: 350px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      margin-top: 17px;
+    }
+
+    .footer-column strong {
+      display: block;
+      margin-bottom: 17px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .footer-column a {
+      display: block;
+      width: max-content;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 11px;
+      transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: var(--lime);
+      transform: translateX(3px);
+    }
+
+    .footer-bottom {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid var(--white-border);
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .footer-bottom strong {
       color: var(--text);
     }
 
-    /* =========================
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      z-index: 5000;
+      transform: translate(-50%, 120px);
+      padding: 13px 18px;
+      border: 1px solid var(--white-border-2);
+      border-radius: 999px;
+      background: rgba(16,18,18,.92);
+      backdrop-filter: blur(20px);
+      color: var(--text);
+      font-size: 12px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transition: .35s ease;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    /* =========================================================
        RESPONSIVE
-    ========================= */
+       ========================================================= */
 
-    @media (max-width: 1050px) {
-      .hero {
+    @media (max-width: 1100px) {
+
+      .hero-layout {
         grid-template-columns: 1fr;
-        padding-top: 65px;
       }
 
-      .website-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
+      .hero-stage {
+        min-height: 470px;
       }
 
-      .desktop-device {
-        width: min(900px, 92vw);
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .package-card {
+        max-width: 700px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
-    @media (max-width: 700px) {
-      .nav {
-        width: min(100% - 22px, 1400px);
+    @media (max-width: 850px) {
+
+      .nav-links {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 70px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+        border: 1px solid var(--white-border);
+        border-radius: 20px;
+        background: rgba(12,14,14,.96);
+        backdrop-filter: blur(25px);
       }
 
-      .clock {
+      body.light .nav-links {
+        background: rgba(255,255,255,.97);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-link {
+        padding: 13px;
+      }
+
+      .mobile-toggle {
+        display: grid;
+      }
+
+      .nav-actions .desktop-only {
         display: none;
       }
 
-      .hero,
-      .showcase,
-      footer {
-        width: calc(100% - 22px);
-      }
-
-      .hero {
-        padding: 55px 0 35px;
-      }
-
-      h1 {
-        font-size: 51px;
-      }
-
-      .website-grid {
+      .about-grid {
         grid-template-columns: 1fr;
       }
 
-      .section-bar {
+      .salah-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .hero-title {
+        font-size: clamp(52px, 13vw, 85px);
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: min(
+          calc(100% - 28px),
+          var(--container)
+        );
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .salah-brand {
+        display: none;
+      }
+
+      .salah-inner {
+        justify-content: flex-start;
+      }
+
+      .navbar {
+        top: 48px;
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .logo-text small {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 70px 0 80px;
+      }
+
+      .hero-copy {
+        font-size: 14px;
+      }
+
+      .hero-stage {
+        min-height: 360px;
+      }
+
+      .browser {
+        transform: rotate(0);
+      }
+
+      .browser-screen {
+        height: 280px;
+      }
+
+      .fake-site {
+        padding: 22px;
+      }
+
+      .fake-hero {
+        margin-top: 45px;
+      }
+
+      .fake-card-row {
+        left: 22px;
+        right: 22px;
+        bottom: 20px;
+      }
+
+      .hero-badge {
+        right: 5px;
+        bottom: 10px;
+      }
+
+      .section-head {
         align-items: flex-start;
         flex-direction: column;
       }
 
-      .presentation-top {
-        height: 65px;
-        padding: 0 12px;
+      .website-card {
+        width: 330px;
       }
 
-      .presentation-stage {
-        inset: 65px 10px 115px;
+      .website-preview {
+        height: 220px;
       }
 
-      .desktop-device {
-        width: 96vw;
-        border-radius: 13px;
-        padding: 7px 7px 25px;
+      .showcase-window::before,
+      .showcase-window::after {
+        width: 50px;
       }
 
-      .device-stand,
-      .device-bottom {
-        display: none;
+      .about-card {
+        min-height: auto;
       }
 
-      .presentation-info {
-        left: 12px;
-        right: 12px;
-        bottom: 14px;
-        align-items: flex-end;
+      .about-card h3 {
+        margin-top: 35px;
       }
 
-      .presentation-site strong {
-        font-size: 15px;
+      .service-grid {
+        grid-template-columns: 1fr;
       }
 
-      .presentation-site span {
-        max-width: 210px;
+      .salah-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .presentation-progress {
-        flex-direction: column;
-        align-items: flex-end;
+      .support-card {
+        padding: 35px 25px;
       }
 
-      .progress-line {
-        width: 90px;
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 55px 0;
       }
 
-      .presentation-btn.text-btn {
-        display: none;
-      }
-
-      footer {
-        flex-direction: column;
+      .footer-bottom {
         align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -1005,335 +1678,1013 @@
 
 <body>
 
-  <div class="ambient"></div>
+  <div class="ambient">
+    <div class="grid-bg"></div>
+  </div>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+  <!-- =======================================================
+       SALAH BAR — ALWAYS ABOVE NAVBAR
+       ======================================================= -->
 
-  <header class="topbar">
-    <nav class="nav">
+  <div class="salah-bar">
+    <div class="container salah-inner">
 
-      <a class="brand" href="../index.html">
-        <div class="brand-mark">WD</div>
+      <div class="salah-brand">
+        <span>🕌</span>
+        <span>Prayer Times</span>
+      </div>
 
-        <div class="brand-text">
-          <strong>Website Deals</strong>
-          <span>Live Website Showcase</span>
+      <div class="prayer-list">
+
+        <div class="prayer" data-prayer="Fajr">
+          <span>Fajr</span>
+          <strong>04:45</strong>
         </div>
+
+        <div class="prayer" data-prayer="Dhuhr">
+          <span>Dhuhr</span>
+          <strong>12:05</strong>
+        </div>
+
+        <div class="prayer" data-prayer="Asr">
+          <span>Asr</span>
+          <strong>16:15</strong>
+        </div>
+
+        <div class="prayer" data-prayer="Maghrib">
+          <span>Maghrib</span>
+          <strong>18:00</strong>
+        </div>
+
+        <div class="prayer" data-prayer="Isha">
+          <span>Isha</span>
+          <strong>19:20</strong>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       NAVBAR
+       ======================================================= -->
+
+  <header class="navbar">
+
+    <div class="container nav-inner">
+
+      <a href="#home" class="logo">
+
+        <div class="logo-mark">
+          WD
+        </div>
+
+        <div class="logo-text">
+          <strong>Website Deals</strong>
+          <small>Premium Website Marketplace</small>
+        </div>
+
       </a>
+
+      <nav class="nav-links" id="navLinks">
+
+        <a class="nav-link active" href="#home">
+          Home
+        </a>
+
+        <a class="nav-link" href="#package">
+          Package
+        </a>
+
+        <a class="nav-link" href="#websites">
+          Websites
+        </a>
+
+        <a class="nav-link" href="#salah">
+          Salah
+        </a>
+
+        <a class="nav-link" href="#about">
+          About
+        </a>
+
+        <a
+          class="nav-link"
+          href="https://support.websitedeals.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Support
+        </a>
+
+      </nav>
 
       <div class="nav-actions">
 
-        <div class="clock">
-          <span class="live-dot"></span>
-          <span id="clockText">LIVE</span>
-        </div>
+        <button
+          class="icon-btn desktop-only"
+          id="themeBtn"
+          title="Toggle theme"
+          aria-label="Toggle theme"
+        >
+          ☼
+        </button>
 
         <button
-          class="icon-btn"
-          type="button"
-          title="Admin"
-          onclick="openAdmin()"
+          class="icon-btn mobile-toggle"
+          id="menuBtn"
+          title="Menu"
+          aria-label="Open menu"
         >
-          ⚙
+          ☰
         </button>
 
       </div>
 
-    </nav>
+    </div>
+
   </header>
 
-  <!-- =========================
-       HERO
-  ========================= -->
 
-  <main>
+  <!-- =======================================================
+       HOME
+       ======================================================= -->
+
+  <main id="home">
 
     <section class="hero">
 
-      <div>
+      <div class="container hero-layout">
 
-        <div class="eyebrow">
-          <span class="live-dot"></span>
-          Personal Client Showcase
+        <div>
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            LIVE WEBSITE MARKETPLACE
+          </div>
+
+          <h1 class="hero-title">
+            Your websites.
+            <span class="lime">Live.</span>
+            Anywhere.
+          </h1>
+
+          <p class="hero-copy">
+            Premium ready-made websites for businesses, creators,
+            restaurants, agencies and brands. Choose a monthly
+            package and launch a professional website without
+            starting from zero.
+          </p>
+
+          <div class="hero-actions">
+
+            <a
+              href="#websites"
+              class="btn btn-primary"
+            >
+              Explore Live Websites
+              <span>↗</span>
+            </a>
+
+            <a
+              href="#package"
+              class="btn"
+            >
+              View Packages
+            </a>
+
+          </div>
+
+          <div class="hero-stats">
+
+            <div class="stat">
+              <strong>100+</strong>
+              <span>Ready Websites</span>
+            </div>
+
+            <div class="stat">
+              <strong>20+</strong>
+              <span>Categories</span>
+            </div>
+
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>Marketplace</span>
+            </div>
+
+          </div>
+
         </div>
 
-        <h1>
-          Your websites.<br />
-          <span>Live. Anywhere.</span>
-        </h1>
 
-        <p class="hero-copy">
-          আপনার সব real website এক জায়গায়। Client-এর সামনে laptop,
-          desktop অথবা tablet খুলেই Explore করুন — premium presentation
-          mode-এ website দেখান।
-        </p>
+        <!-- HERO VISUAL -->
 
-      </div>
+        <div class="hero-stage">
 
-      <div class="hero-side">
+          <div class="hero-glow"></div>
 
-        <div class="hero-side-card">
-          <small>Presentation Mode</small>
-          <strong>Explore → Full Screen</strong>
-          <p>
-            Smart sound, smooth scale, slide transition এবং live website
-            presentation — সব একসাথে।
-          </p>
+          <div class="browser">
+
+            <div class="browser-top">
+
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+
+              <div class="browser-url">
+                website-deals.com
+              </div>
+
+            </div>
+
+            <div class="browser-screen">
+
+              <div class="fake-site">
+
+                <div class="fake-nav">
+
+                  <div class="fake-logo"></div>
+
+                  <div class="fake-nav-items">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                </div>
+
+                <div class="fake-hero">
+
+                  <div class="line"></div>
+                  <div class="line"></div>
+                  <div class="line"></div>
+
+                  <div class="fake-button"></div>
+
+                </div>
+
+                <div class="fake-card-row">
+                  <div class="fake-card"></div>
+                  <div class="fake-card"></div>
+                  <div class="fake-card"></div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="hero-badge">
+            <strong>● LIVE</strong>
+            <span>Client presentation mode</span>
+          </div>
+
         </div>
 
       </div>
 
     </section>
 
-    <!-- =========================
-         SHOWCASE
-    ========================= -->
 
-    <section class="showcase">
+    <!-- =====================================================
+         PACKAGE
+         ===================================================== -->
 
-      <div class="section-bar">
+    <section
+      class="section"
+      id="package"
+    >
 
-        <div class="section-title">
-          <h2>Live Website Wall</h2>
-          <p id="websiteCount">0 websites available</p>
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              SIMPLE MONTHLY PLANS
+            </div>
+
+            <h2 class="section-title">
+              Pick the level
+              your business needs.
+            </h2>
+
+            <p class="section-description">
+              Ready-made websites with hosting, SSL and the
+              services you need to get online quickly.
+            </p>
+
+          </div>
+
         </div>
 
-        <div class="filters">
 
-          <button
-            class="filter active"
-            data-filter="all"
-            type="button"
-          >
-            All
-          </button>
+        <div class="package-grid">
 
-          <button
-            class="filter"
-            data-filter="starter"
-            type="button"
-          >
-            Starter
-          </button>
+          <!-- STARTER -->
 
-          <button
-            class="filter"
-            data-filter="business"
-            type="button"
-          >
-            Business
-          </button>
+          <article class="package-card">
 
-          <button
-            class="filter"
-            data-filter="premium"
-            type="button"
-          >
-            Premium
-          </button>
+            <div class="package-label">
+              Package 01
+            </div>
+
+            <h3 class="package-name">
+              Starter
+            </h3>
+
+            <div class="package-price">
+              <strong>৳549</strong>
+              <span>/ month</span>
+            </div>
+
+            <p class="package-description">
+              A clean and professional ready-made website
+              for individuals and small businesses.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>Complete ready-made website</li>
+              <li>Free hosting</li>
+              <li>Free SSL</li>
+              <li>Firebase integration</li>
+              <li>Basic logo</li>
+              <li>Responsive design</li>
+              <li>Custom domain connection</li>
+              <li>Contact form</li>
+              <li>Manual bKash / Nagad / Bank payment</li>
+              <li>Basic SEO</li>
+              <li>Basic support</li>
+              <li>Uptime monitoring</li>
+
+            </ul>
+
+            <a
+              class="btn btn-primary package-button"
+              href="package-details/?plan=starter"
+            >
+              View Starter
+              <span>→</span>
+            </a>
+
+          </article>
+
+
+          <!-- BUSINESS -->
+
+          <article class="package-card featured">
+
+            <div class="popular">
+              Most Popular
+            </div>
+
+            <div class="package-label">
+              Package 02
+            </div>
+
+            <h3 class="package-name">
+              Business
+            </h3>
+
+            <div class="package-price">
+              <strong>৳999</strong>
+              <span>/ month</span>
+            </div>
+
+            <p class="package-description">
+              Advanced website systems for growing businesses
+              that need more control and automation.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>Everything in Starter</li>
+              <li>Premium website</li>
+              <li>Advanced Firebase</li>
+              <li>Admin panel</li>
+              <li>Online gateway</li>
+              <li>bKash / Nagad / Bank</li>
+              <li>Product & service management</li>
+              <li>Inquiry & order management</li>
+              <li>WhatsApp / Messenger</li>
+              <li>Google Maps</li>
+              <li>Advanced SEO</li>
+              <li>Analytics & Search Console</li>
+              <li>Backup & security</li>
+              <li>Performance optimization</li>
+              <li>Content updates</li>
+              <li>Minor customization</li>
+              <li>Priority support</li>
+
+            </ul>
+
+            <a
+              class="btn btn-primary package-button"
+              href="package-details/?plan=business"
+            >
+              View Business
+              <span>→</span>
+            </a>
+
+          </article>
+
+
+          <!-- PREMIUM -->
+
+          <article class="package-card">
+
+            <div class="package-label">
+              Package 03
+            </div>
+
+            <h3 class="package-name">
+              Premium
+            </h3>
+
+            <div class="package-price">
+              <strong>৳1,999</strong>
+              <span>/ month</span>
+            </div>
+
+            <p class="package-description">
+              A complete Shopify-style business and
+              e-commerce ecosystem.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>Everything in Business</li>
+              <li>Shopify-style system</li>
+              <li>Free hosting + SSL</li>
+              <li>Firebase / MongoDB backend</li>
+              <li>Advanced admin dashboard</li>
+              <li>Unlimited products*</li>
+              <li>Stock & inventory management</li>
+              <li>Categories & collections</li>
+              <li>Variants & SKU</li>
+              <li>Search & filtering</li>
+              <li>Pricing & sale pricing</li>
+              <li>Coupons</li>
+              <li>Cart & wishlist</li>
+              <li>Customer account</li>
+              <li>Checkout & payment</li>
+              <li>Order tracking</li>
+              <li>Customer management</li>
+              <li>Shipping & delivery</li>
+              <li>Analytics</li>
+              <li>WhatsApp & notifications</li>
+              <li>SEO & Search Console</li>
+              <li>Automated backup</li>
+              <li>Security monitoring</li>
+              <li>API integration</li>
+              <li>Custom workflows</li>
+              <li>Maintenance & development</li>
+              <li>Dedicated priority support</li>
+
+            </ul>
+
+            <a
+              class="btn btn-primary package-button"
+              href="package-details/?plan=premium"
+            >
+              View Premium
+              <span>→</span>
+            </a>
+
+          </article>
 
         </div>
 
       </div>
 
-      <div
-        class="website-grid"
-        id="websiteGrid"
-      ></div>
+    </section>
 
-      <div
-        class="empty"
-        id="emptyState"
-      >
-        <strong>No websites found</strong>
-        No website has been added to this package yet.
+
+    <!-- =====================================================
+         WEBSITES — AUTOMATIC LIVE SHOWCASE
+         ===================================================== -->
+
+    <section
+      class="section showcase-section"
+      id="websites"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              LIVE SHOWCASE
+            </div>
+
+            <h2 class="section-title">
+              Websites that
+              sell themselves.
+            </h2>
+
+            <p class="section-description">
+              No need to click. Real websites automatically
+              move across the screen so you can simply open
+              this page and show clients what you have built.
+            </p>
+
+          </div>
+
+          <div class="showcase-topline">
+            <span class="live-indicator"></span>
+            AUTO PLAYING
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="showcase-window">
+
+        <div
+          class="showcase-track"
+          id="showcaseTrack"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SALAH
+         ===================================================== -->
+
+    <section
+      class="section"
+      id="salah"
+    >
+
+      <div class="container">
+
+        <div class="salah-section-card">
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            SALAH
+          </div>
+
+          <h2 class="section-title">
+            Keep business
+            and prayer in balance.
+          </h2>
+
+          <p class="section-description">
+            Prayer times shown here are presentation defaults.
+            Update them whenever your local schedule changes.
+          </p>
+
+          <div class="salah-grid">
+
+            <div class="salah-card">
+              <span>Fajr</span>
+              <strong>04:45</strong>
+            </div>
+
+            <div class="salah-card">
+              <span>Dhuhr</span>
+              <strong>12:05</strong>
+            </div>
+
+            <div class="salah-card">
+              <span>Asr</span>
+              <strong>16:15</strong>
+            </div>
+
+            <div class="salah-card">
+              <span>Maghrib</span>
+              <strong>18:00</strong>
+            </div>
+
+            <div class="salah-card">
+              <span>Isha</span>
+              <strong>19:20</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+         ===================================================== -->
+
+    <section
+      class="section"
+      id="about"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              ABOUT WEBSITE DEALS
+            </div>
+
+            <h2 class="section-title">
+              Built to make
+              selling websites easier.
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="about-grid">
+
+          <article class="about-card">
+
+            <div class="about-number">
+              01 / MARKETPLACE
+            </div>
+
+            <h3>
+              Ready-made.
+              Professional.
+              Fast.
+            </h3>
+
+            <p>
+              Website Deals brings ready-made website experiences
+              together in one premium marketplace. Instead of
+              starting every project from scratch, clients can
+              explore real websites and choose the right package.
+            </p>
+
+          </article>
+
+
+          <article class="about-card">
+
+            <div class="about-number">
+              02 / PRESENTATION WALL
+            </div>
+
+            <h3>
+              Open it.
+              Leave it.
+              Let it sell.
+            </h3>
+
+            <p>
+              The live showcase is designed for client meetings.
+              Open the page on a laptop or tablet and the website
+              previews continuously move across the screen.
+              No presentation PDF is required.
+            </p>
+
+          </article>
+
+        </div>
+
+
+        <div class="service-grid">
+
+          <div class="service">
+
+            <div class="service-icon">
+              ◉
+            </div>
+
+            <strong>Free SSL</strong>
+
+            <span>
+              Secure HTTPS-ready website setup.
+            </span>
+
+          </div>
+
+          <div class="service">
+
+            <div class="service-icon">
+              ↗
+            </div>
+
+            <strong>Custom Domain</strong>
+
+            <span>
+              Connect your own professional domain.
+            </span>
+
+          </div>
+
+          <div class="service">
+
+            <div class="service-icon">
+              ⚡
+            </div>
+
+            <strong>Fast Performance</strong>
+
+            <span>
+              Optimized experiences for modern devices.
+            </span>
+
+          </div>
+
+          <div class="service">
+
+            <div class="service-icon">
+              ◌
+            </div>
+
+            <strong>Ongoing Support</strong>
+
+            <span>
+              Get help when your website needs attention.
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SUPPORT
+         ===================================================== -->
+
+    <section class="support">
+
+      <div class="container">
+
+        <div class="support-card">
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            NEED HELP?
+          </div>
+
+          <h2>
+            Let's get your
+            website live.
+          </h2>
+
+          <p>
+            Need a package recommendation, website setup,
+            customization or support? Visit the dedicated
+            Website Deals support center.
+          </p>
+
+          <a
+            href="https://support.websitedeals.com"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            Open Support Center
+            <span>↗</span>
+          </a>
+
+        </div>
+
       </div>
 
     </section>
 
   </main>
 
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
   <footer>
 
-    <div>
-      <strong>Website Deals</strong>
-      — Live Client Presentation Wall
+    <div class="container footer-main">
+
+      <div class="footer-brand">
+
+        <a href="#home" class="logo">
+
+          <div class="logo-mark">
+            WD
+          </div>
+
+          <div class="logo-text">
+            <strong>Website Deals</strong>
+            <small>Premium Website Marketplace</small>
+          </div>
+
+        </a>
+
+        <p>
+          Premium ready-made websites for modern businesses,
+          creators and brands. Choose your package, connect
+          your domain and get online.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <strong>Explore</strong>
+
+        <a href="#home">
+          Home
+        </a>
+
+        <a href="#package">
+          Packages
+        </a>
+
+        <a href="#websites">
+          Websites
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <strong>Packages</strong>
+
+        <a href="package-details/?plan=starter">
+          Starter
+        </a>
+
+        <a href="package-details/?plan=business">
+          Business
+        </a>
+
+        <a href="package-details/?plan=premium">
+          Premium
+        </a>
+
+        <a href="#websites">
+          Live Showcase
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <strong>Support</strong>
+
+        <a
+          href="https://support.websitedeals.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Support Center
+        </a>
+
+        <a href="#salah">
+          Salah
+        </a>
+
+        <a href="#about">
+          About Website Deals
+        </a>
+
+      </div>
+
     </div>
 
-    <div>
-      Explore • Present • Sell
+
+    <div class="container footer-bottom">
+
+      <div>
+        © <span id="year"></span>
+        <strong>Website Deals</strong>.
+        All rights reserved.
+      </div>
+
+      <div>
+        Premium Website Marketplace • Bangladesh
+      </div>
+
     </div>
 
   </footer>
 
-  <!-- =========================
-       PRESENTATION
-  ========================= -->
 
-  <section
+  <!-- =======================================================
+       LIVE PRESENTATION MODAL
+       ======================================================= -->
+
+  <div
     class="presentation"
     id="presentation"
     aria-hidden="true"
   >
 
-    <div class="presentation-top">
+    <div class="presentation-box">
 
-      <div class="presentation-brand">
+      <div class="presentation-head">
 
-        <div class="presentation-brand-mark">
-          WD
+        <div class="presentation-title">
+
+          <strong id="presentationName">
+            Live Website
+          </strong>
+
+          <span id="presentationUrl">
+            —
+          </span>
+
         </div>
 
-        <div class="presentation-brand-text">
-          <strong>Website Deals</strong>
-          <span>LIVE PRESENTATION</span>
+        <div class="presentation-actions">
+
+          <button
+            class="icon-btn"
+            id="fullscreenBtn"
+            title="Fullscreen"
+          >
+            ⛶
+          </button>
+
+          <a
+            class="icon-btn"
+            id="openLiveBtn"
+            target="_blank"
+            rel="noopener"
+            title="Open live website"
+          >
+            ↗
+          </a>
+
+          <button
+            class="icon-btn"
+            id="closePresentation"
+            title="Close"
+          >
+            ×
+          </button>
+
         </div>
 
       </div>
 
-      <div class="presentation-controls">
+      <div class="presentation-frame">
 
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="previousWebsite()"
-          title="Previous website"
-        >
-          ←
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="toggleAutoPlay()"
-          id="autoButton"
-        >
-          ▶ Auto
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="toggleSound()"
-          id="soundButton"
-        >
-          🔊 Sound
-        </button>
-
-        <button
-          class="presentation-btn text-btn"
-          type="button"
-          onclick="openCurrentWebsite()"
-        >
-          Open Live
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="toggleFullscreen()"
-        >
-          ⛶
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="closePresentation()"
-        >
-          ✕
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="nextWebsite()"
-          title="Next website"
-        >
-          →
-        </button>
+        <iframe
+          id="presentationIframe"
+          title="Live Website Presentation"
+          loading="eager"
+        ></iframe>
 
       </div>
 
     </div>
 
-    <div class="presentation-stage">
+  </div>
 
-      <div
-        class="desktop-device"
-        id="desktopDevice"
-      >
 
-        <div class="device-camera"></div>
+  <!-- =======================================================
+       TOAST
+       ======================================================= -->
 
-        <div class="desktop-screen">
+  <div
+    class="toast"
+    id="toast"
+  ></div>
 
-          <iframe
-            id="presentationFrame"
-            title="Live Website Presentation"
-            allow="autoplay; fullscreen"
-          ></iframe>
-
-        </div>
-
-        <div class="device-bottom">
-          WEBSITE DEALS
-        </div>
-
-        <div class="device-stand"></div>
-
-      </div>
-
-    </div>
-
-    <div class="presentation-info">
-
-      <div class="presentation-site">
-
-        <small id="presentationPackage">
-          BUSINESS PACKAGE
-        </small>
-
-        <strong id="presentationName">
-          Website
-        </strong>
-
-        <span id="presentationUrl">
-          https://example.com
-        </span>
-
-      </div>
-
-      <div class="presentation-progress">
-
-        <div class="progress-line">
-          <div
-            class="progress-fill"
-            id="progressFill"
-          ></div>
-        </div>
-
-        <div
-          class="counter"
-          id="presentationCounter"
-        >
-          1 / 1
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
 
   <script>
     /* =========================================================
-       WEBSITE DATA
+       WEBSITE DEALS
+       ULTRA PREMIUM JAVASCRIPT
        ========================================================= */
 
-    const DEFAULT_WEBSITES = [
+    const STORAGE_KEY = "websiteDealsWebsites";
+
+    const defaultWebsites = [
       {
         id: "snk-it-institute",
         name: "SNK IT Institute",
@@ -1343,913 +2694,790 @@
         animation: "zoom",
         status: true,
         sort: 1
+      },
+      {
+        id: "website-deals-demo",
+        name: "Website Deals",
+        package: "premium",
+        packageLabel: "Premium Package",
+        url: "https://websitedeals.com",
+        animation: "float",
+        status: true,
+        sort: 2
       }
     ];
 
-    const STORAGE_KEY = "websiteDealsWebsites";
-
-    let websites = [];
-    let currentFilter = "all";
-
-    let presentationWebsites = [];
-    let currentIndex = 0;
-
-    let autoPlay = false;
-    let autoTimer = null;
-    let progressTimer = null;
-
-    let soundEnabled = true;
-
-    let audioContext = null;
-
-    const AUTO_DURATION = 8000;
 
     /* =========================================================
-       LOAD DATA
+       HELPERS
        ========================================================= */
 
-    function loadWebsites() {
+    const $ = (selector) =>
+      document.querySelector(selector);
+
+    const $$ = (selector) =>
+      document.querySelectorAll(selector);
+
+
+    function showToast(message) {
+
+      const toast = $("#toast");
+
+      if (!toast) return;
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(window.toastTimer);
+
+      window.toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2600);
+    }
+
+
+    function safeUrl(url) {
+
+      if (!url) return "";
+
+      let value = String(url).trim();
+
+      if (
+        !value.startsWith("http://") &&
+        !value.startsWith("https://")
+      ) {
+        value = "https://" + value;
+      }
+
+      try {
+        return new URL(value).href;
+      } catch {
+        return "";
+      }
+    }
+
+
+    /* =========================================================
+       WEBSITE DATA
+       ========================================================= */
+
+    function getWebsites() {
 
       try {
 
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved =
+          localStorage.getItem(STORAGE_KEY);
 
-        if (saved) {
-
-          const parsed = JSON.parse(saved);
-
-          if (Array.isArray(parsed)) {
-            websites = parsed;
-          } else {
-            websites = [...DEFAULT_WEBSITES];
-          }
-
-        } else {
-
-          websites = [...DEFAULT_WEBSITES];
-
-          localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(websites)
-          );
+        if (!saved) {
+          return defaultWebsites;
         }
+
+        const parsed =
+          JSON.parse(saved);
+
+        if (!Array.isArray(parsed)) {
+          return defaultWebsites;
+        }
+
+        return parsed;
 
       } catch (error) {
 
-        websites = [...DEFAULT_WEBSITES];
+        console.warn(
+          "Website Deals storage error:",
+          error
+        );
 
+        return defaultWebsites;
       }
-
-      websites = websites
-        .filter(site => site && site.status !== false)
-        .sort((a,b) => {
-          return Number(a.sort || 0) - Number(b.sort || 0);
-        });
-
     }
 
+
+    function getActiveWebsites() {
+
+      return getWebsites()
+        .filter(site => site && site.status !== false)
+        .filter(site => safeUrl(site.url))
+        .sort(
+          (a,b) =>
+            Number(a.sort || 999) -
+            Number(b.sort || 999)
+        );
+    }
+
+
     /* =========================================================
-       CLOCK
+       WEBSITE CARD
        ========================================================= */
 
-    function updateClock() {
+    function createWebsiteCard(site) {
 
-      const el = document.getElementById("clockText");
+      const url =
+        safeUrl(site.url);
 
-      if (!el) return;
+      const packageLabel =
+        site.packageLabel ||
+        (
+          site.package === "starter"
+            ? "Starter Package"
+            : site.package === "premium"
+              ? "Premium Package"
+              : "Business Package"
+        );
 
-      const now = new Date();
+      const card =
+        document.createElement("article");
 
-      const time = now.toLocaleTimeString(
-        "en-BD",
-        {
-          hour: "2-digit",
-          minute: "2-digit"
+      card.className =
+        "website-card";
+
+      card.innerHTML = `
+        <div class="website-preview">
+
+          <iframe
+            src="${escapeAttribute(url)}"
+            title="${escapeAttribute(site.name || "Live Website")}"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+
+          <div class="preview-shine"></div>
+
+        </div>
+
+        <div class="website-info">
+
+          <div>
+
+            <div class="website-name">
+              ${escapeHtml(site.name || "Website")}
+            </div>
+
+            <div class="website-package">
+              ${escapeHtml(packageLabel)}
+            </div>
+
+          </div>
+
+          <div class="website-actions">
+
+            <button
+              class="btn btn-small btn-primary explore-btn"
+              type="button"
+            >
+              Explore
+            </button>
+
+            <a
+              class="btn btn-small"
+              href="${escapeAttribute(url)}"
+              target="_blank"
+              rel="noopener"
+            >
+              ↗
+            </a>
+
+          </div>
+
+        </div>
+      `;
+
+      const explore =
+        card.querySelector(".explore-btn");
+
+      explore.addEventListener(
+        "click",
+        () => {
+          openPresentation(site);
         }
       );
 
-      el.textContent = time;
-
+      return card;
     }
 
-    setInterval(updateClock, 1000);
-    updateClock();
 
-    /* =========================================================
-       PACKAGE HELPERS
-       ========================================================= */
+    function escapeHtml(value) {
 
-    function getPackageLabel(packageName) {
-
-      const labels = {
-        starter: "Starter Package",
-        business: "Business Package",
-        premium: "Premium Package"
-      };
-
-      return labels[packageName] || "Website Package";
-
-    }
-
-    function escapeHTML(value) {
-
-      return String(value || "")
+      return String(value)
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
-
     }
 
+
+    function escapeAttribute(value) {
+
+      return escapeHtml(value);
+    }
+
+
     /* =========================================================
-       RENDER
+       SHOWCASE
        ========================================================= */
 
-    function renderWebsites() {
+    function renderShowcase() {
 
-      const grid = document.getElementById("websiteGrid");
-      const empty = document.getElementById("emptyState");
-      const count = document.getElementById("websiteCount");
+      const track =
+        $("#showcaseTrack");
 
-      if (!grid) return;
+      if (!track) return;
 
-      const filtered = websites.filter(site => {
+      const websites =
+        getActiveWebsites();
 
-        if (currentFilter === "all") {
-          return true;
-        }
+      track.innerHTML = "";
 
-        return site.package === currentFilter;
+      if (!websites.length) {
 
-      });
+        const empty =
+          document.createElement("div");
 
-      count.textContent =
-        `${filtered.length} website${filtered.length === 1 ? "" : "s"} available`;
+        empty.className =
+          "empty-showcase";
 
-      if (!filtered.length) {
-
-        grid.innerHTML = "";
-
-        empty.style.display = "block";
-
-        return;
-
-      }
-
-      empty.style.display = "none";
-
-      grid.innerHTML = filtered.map((site, index) => {
-
-        return `
-          <article class="website-card">
-
-            <div class="preview">
-
-              <div class="browser-bar">
-
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-
-                <div class="browser-address">
-                  ${escapeHTML(site.url)}
-                </div>
-
-              </div>
-
-              <iframe
-                class="website-frame"
-                src="${escapeHTML(site.url)}"
-                title="${escapeHTML(site.name)}"
-                loading="lazy"
-                allow="fullscreen"
-              ></iframe>
-
-            </div>
-
-            <div class="card-content">
-
-              <span class="package-badge">
-                ${escapeHTML(site.packageLabel || getPackageLabel(site.package))}
-              </span>
-
-              <h3 class="card-title">
-                ${escapeHTML(site.name)}
-              </h3>
-
-              <div class="card-url">
-                ${escapeHTML(site.url)}
-              </div>
-
-              <div class="card-actions">
-
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  onclick="exploreWebsite('${escapeHTML(site.id)}')"
-                >
-                  ✦ Explore
-                </button>
-
-                <button
-                  class="btn"
-                  type="button"
-                  onclick="openWebsite('${escapeHTML(site.id)}')"
-                >
-                  ↗ Open Live
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
+        empty.innerHTML = `
+          <strong>
+            No live websites added yet.
+          </strong>
+          <br><br>
+          Add real website URLs from
+          <b>admin/websites.html</b>
+          to start the automatic showcase.
         `;
 
-      }).join("");
+        track.appendChild(empty);
 
+        return;
+      }
+
+
+      /*
+        We duplicate the cards.
+
+        Why?
+
+        The CSS marquee moves the entire track by 50%.
+        Duplicate content creates a seamless infinite loop.
+      */
+
+      const firstSet =
+        websites.map(createWebsiteCard);
+
+      const secondSet =
+        websites.map(createWebsiteCard);
+
+      firstSet.forEach(card =>
+        track.appendChild(card)
+      );
+
+      secondSet.forEach(card =>
+        track.appendChild(card)
+      );
+
+
+      /*
+        Dynamic animation speed.
+
+        More websites = longer animation.
+        This keeps the presentation comfortable.
+      */
+
+      const duration =
+        Math.max(
+          45,
+          websites.length * 22
+        );
+
+      track.style.animationDuration =
+        duration + "s";
     }
 
+
     /* =========================================================
-       FILTER
+       PRESENTATION
        ========================================================= */
 
-    document.querySelectorAll(".filter").forEach(button => {
+    function openPresentation(site) {
 
-      button.addEventListener("click", () => {
+      const modal =
+        $("#presentation");
 
-        document
-          .querySelectorAll(".filter")
-          .forEach(btn => btn.classList.remove("active"));
+      const iframe =
+        $("#presentationIframe");
 
-        button.classList.add("active");
+      const name =
+        $("#presentationName");
 
-        currentFilter = button.dataset.filter;
+      const urlText =
+        $("#presentationUrl");
 
-        renderWebsites();
+      const openLive =
+        $("#openLiveBtn");
 
-      });
+      const url =
+        safeUrl(site.url);
 
-    });
+      if (!url) {
 
-    /* =========================================================
-       FIND WEBSITE
-       ========================================================= */
+        showToast(
+          "This website URL is not valid."
+        );
 
-    function findWebsite(id) {
-
-      return websites.find(site => site.id === id);
-
-    }
-
-    /* =========================================================
-       OPEN LIVE WEBSITE
-       ========================================================= */
-
-    function openWebsite(id) {
-
-      const site = findWebsite(id);
-
-      if (!site) return;
-
-      window.open(
-        site.url,
-        "_blank",
-        "noopener,noreferrer"
-      );
-
-      playSound("open");
-
-    }
-
-    /* =========================================================
-       AUDIO ENGINE
-       ========================================================= */
-
-    function initAudio() {
-
-      if (audioContext) return;
-
-      try {
-
-        audioContext =
-          new (window.AudioContext || window.webkitAudioContext)();
-
-      } catch (error) {
-
-        audioContext = null;
-
+        return;
       }
 
-    }
+      name.textContent =
+        site.name || "Live Website";
 
-    function playSound(type = "transition") {
+      urlText.textContent =
+        url;
 
-      if (!soundEnabled) return;
+      iframe.src =
+        url;
 
-      initAudio();
+      openLive.href =
+        url;
 
-      if (!audioContext) return;
+      modal.classList.add("open");
 
-      if (audioContext.state === "suspended") {
-        audioContext.resume();
-      }
-
-      const now = audioContext.currentTime;
-
-      const oscillator =
-        audioContext.createOscillator();
-
-      const gain =
-        audioContext.createGain();
-
-      oscillator.connect(gain);
-      gain.connect(audioContext.destination);
-
-      let frequency = 520;
-      let duration = .13;
-
-      if (type === "open") {
-        frequency = 620;
-        duration = .18;
-      }
-
-      if (type === "next") {
-        frequency = 740;
-        duration = .12;
-      }
-
-      if (type === "previous") {
-        frequency = 430;
-        duration = .12;
-      }
-
-      if (type === "close") {
-        frequency = 300;
-        duration = .16;
-      }
-
-      oscillator.type = "sine";
-
-      oscillator.frequency.setValueAtTime(
-        frequency,
-        now
-      );
-
-      oscillator.frequency.exponentialRampToValueAtTime(
-        frequency * .72,
-        now + duration
-      );
-
-      gain.gain.setValueAtTime(
-        0.0001,
-        now
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.035,
-        now + .025
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        now + duration
-      );
-
-      oscillator.start(now);
-      oscillator.stop(now + duration + .02);
-
-    }
-
-    /* =========================================================
-       EXPLORE
-    ========================================================= */
-
-    function exploreWebsite(id) {
-
-      const index =
-        websites.findIndex(site => site.id === id);
-
-      if (index === -1) return;
-
-      presentationWebsites = [...websites];
-
-      currentIndex = index;
-
-      const presentation =
-        document.getElementById("presentation");
-
-      presentation.classList.add("open");
-
-      presentation.setAttribute(
+      modal.setAttribute(
         "aria-hidden",
         "false"
       );
 
-      document.body.style.overflow = "hidden";
-
-      initAudio();
-      playSound("open");
-
-      showPresentationWebsite("next");
-
-      setTimeout(() => {
-
-        requestFullscreenPresentation();
-
-      }, 180);
-
+      document.body.style.overflow =
+        "hidden";
     }
 
-    /* =========================================================
-       SHOW PRESENTATION WEBSITE
-    ========================================================= */
-
-    function showPresentationWebsite(direction = "next") {
-
-      if (!presentationWebsites.length) return;
-
-      const site =
-        presentationWebsites[currentIndex];
-
-      const frame =
-        document.getElementById("presentationFrame");
-
-      const device =
-        document.getElementById("desktopDevice");
-
-      const name =
-        document.getElementById("presentationName");
-
-      const url =
-        document.getElementById("presentationUrl");
-
-      const packageLabel =
-        document.getElementById("presentationPackage");
-
-      const counter =
-        document.getElementById("presentationCounter");
-
-      frame.src = site.url;
-
-      name.textContent = site.name || "Website";
-
-      url.textContent = site.url || "";
-
-      packageLabel.textContent =
-        site.packageLabel ||
-        getPackageLabel(site.package);
-
-      counter.textContent =
-        `${currentIndex + 1} / ${presentationWebsites.length}`;
-
-      device.classList.remove(
-        "scale-in",
-        "slide-next",
-        "slide-prev",
-        "float-mode"
-      );
-
-      void device.offsetWidth;
-
-      const animation =
-        site.animation || "zoom";
-
-      if (animation === "slide") {
-
-        device.classList.add(
-          direction === "previous"
-            ? "slide-prev"
-            : "slide-next"
-        );
-
-      } else if (animation === "float") {
-
-        device.classList.add("float-mode");
-
-      } else {
-
-        device.classList.add("scale-in");
-
-      }
-
-      playSound(
-        direction === "previous"
-          ? "previous"
-          : "next"
-      );
-
-      resetProgress();
-
-      if (autoPlay) {
-        startProgress();
-      }
-
-    }
-
-    /* =========================================================
-       NEXT
-    ========================================================= */
-
-    function nextWebsite() {
-
-      if (!presentationWebsites.length) return;
-
-      currentIndex++;
-
-      if (currentIndex >= presentationWebsites.length) {
-        currentIndex = 0;
-      }
-
-      showPresentationWebsite("next");
-
-    }
-
-    /* =========================================================
-       PREVIOUS
-    ========================================================= */
-
-    function previousWebsite() {
-
-      if (!presentationWebsites.length) return;
-
-      currentIndex--;
-
-      if (currentIndex < 0) {
-        currentIndex =
-          presentationWebsites.length - 1;
-      }
-
-      showPresentationWebsite("previous");
-
-    }
-
-    /* =========================================================
-       AUTO PLAY
-    ========================================================= */
-
-    function toggleAutoPlay() {
-
-      autoPlay = !autoPlay;
-
-      const button =
-        document.getElementById("autoButton");
-
-      if (autoPlay) {
-
-        button.textContent = "Ⅱ Auto";
-
-        startAutoPlay();
-
-      } else {
-
-        button.textContent = "▶ Auto";
-
-        stopAutoPlay();
-
-      }
-
-    }
-
-    function startAutoPlay() {
-
-      stopAutoPlay();
-
-      startProgress();
-
-      autoTimer = setInterval(() => {
-
-        nextWebsite();
-
-      }, AUTO_DURATION);
-
-    }
-
-    function stopAutoPlay() {
-
-      if (autoTimer) {
-
-        clearInterval(autoTimer);
-        autoTimer = null;
-
-      }
-
-      if (progressTimer) {
-
-        clearInterval(progressTimer);
-        progressTimer = null;
-
-      }
-
-      const fill =
-        document.getElementById("progressFill");
-
-      if (fill) {
-        fill.style.width = "0%";
-      }
-
-    }
-
-    /* =========================================================
-       PROGRESS
-    ========================================================= */
-
-    function resetProgress() {
-
-      const fill =
-        document.getElementById("progressFill");
-
-      if (!fill) return;
-
-      fill.style.width = "0%";
-
-    }
-
-    function startProgress() {
-
-      if (!autoPlay) return;
-
-      if (progressTimer) {
-        clearInterval(progressTimer);
-      }
-
-      const fill =
-        document.getElementById("progressFill");
-
-      const started = Date.now();
-
-      progressTimer = setInterval(() => {
-
-        const elapsed =
-          Date.now() - started;
-
-        const percent =
-          Math.min(
-            100,
-            (elapsed / AUTO_DURATION) * 100
-          );
-
-        fill.style.width =
-          `${percent}%`;
-
-      }, 60);
-
-    }
-
-    /* =========================================================
-       SOUND
-    ========================================================= */
-
-    function toggleSound() {
-
-      soundEnabled = !soundEnabled;
-
-      const button =
-        document.getElementById("soundButton");
-
-      button.textContent =
-        soundEnabled
-          ? "🔊 Sound"
-          : "🔇 Muted";
-
-      if (soundEnabled) {
-
-        initAudio();
-        playSound("open");
-
-      }
-
-    }
-
-    /* =========================================================
-       OPEN CURRENT WEBSITE
-    ========================================================= */
-
-    function openCurrentWebsite() {
-
-      const site =
-        presentationWebsites[currentIndex];
-
-      if (!site) return;
-
-      window.open(
-        site.url,
-        "_blank",
-        "noopener,noreferrer"
-      );
-
-      playSound("open");
-
-    }
-
-    /* =========================================================
-       CLOSE PRESENTATION
-    ========================================================= */
 
     function closePresentation() {
 
-      stopAutoPlay();
+      const modal =
+        $("#presentation");
 
-      autoPlay = false;
+      const iframe =
+        $("#presentationIframe");
 
-      document.getElementById(
-        "autoButton"
-      ).textContent = "▶ Auto";
+      modal.classList.remove("open");
 
-      const presentation =
-        document.getElementById("presentation");
-
-      presentation.classList.remove("open");
-
-      presentation.setAttribute(
+      modal.setAttribute(
         "aria-hidden",
         "true"
       );
 
-      document.body.style.overflow = "";
+      iframe.src =
+        "about:blank";
 
-      playSound("close");
-
-      exitFullscreen();
-
+      document.body.style.overflow =
+        "";
     }
+
+
+    $("#closePresentation")
+      .addEventListener(
+        "click",
+        closePresentation
+      );
+
+
+    $("#presentation")
+      .addEventListener(
+        "click",
+        event => {
+
+          if (
+            event.target.id ===
+            "presentation"
+          ) {
+            closePresentation();
+          }
+
+        }
+      );
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape"
+        ) {
+          closePresentation();
+        }
+
+      }
+    );
+
 
     /* =========================================================
        FULLSCREEN
-    ========================================================= */
+       ========================================================= */
 
-    function requestFullscreenPresentation() {
+    $("#fullscreenBtn")
+      .addEventListener(
+        "click",
+        async () => {
 
-      const element =
-        document.getElementById("presentation");
+          const box =
+            document.querySelector(
+              ".presentation-box"
+            );
 
-      if (!document.fullscreenElement) {
+          try {
 
-        if (element.requestFullscreen) {
+            if (
+              !document.fullscreenElement
+            ) {
 
-          element.requestFullscreen().catch(() => {});
+              await box.requestFullscreen();
+
+            } else {
+
+              await document.exitFullscreen();
+
+            }
+
+          } catch (error) {
+
+            showToast(
+              "Fullscreen is not available in this browser."
+            );
+
+          }
 
         }
+      );
 
-      }
-
-    }
-
-    function toggleFullscreen() {
-
-      if (!document.fullscreenElement) {
-
-        requestFullscreenPresentation();
-
-      } else {
-
-        exitFullscreen();
-
-      }
-
-    }
-
-    function exitFullscreen() {
-
-      if (document.fullscreenElement) {
-
-        document.exitFullscreen().catch(() => {});
-
-      }
-
-    }
 
     /* =========================================================
-       KEYBOARD CONTROLS
-    ========================================================= */
+       THEME
+       ========================================================= */
 
-    document.addEventListener("keydown", event => {
+    const THEME_KEY =
+      "websiteDealsTheme";
 
-      const presentation =
-        document.getElementById("presentation");
+    function loadTheme() {
 
-      const isOpen =
-        presentation.classList.contains("open");
+      const saved =
+        localStorage.getItem(
+          THEME_KEY
+        );
 
-      if (!isOpen) return;
+      if (saved === "light") {
 
-      if (event.key === "Escape") {
-
-        closePresentation();
-
-      }
-
-      if (event.key === "ArrowRight") {
-
-        nextWebsite();
+        document.body.classList.add(
+          "light"
+        );
 
       }
 
-      if (event.key === "ArrowLeft") {
+      updateThemeIcon();
+    }
 
-        previousWebsite();
+
+    function updateThemeIcon() {
+
+      const button =
+        $("#themeBtn");
+
+      if (!button) return;
+
+      button.textContent =
+        document.body.classList.contains("light")
+          ? "☾"
+          : "☼";
+    }
+
+
+    $("#themeBtn")
+      .addEventListener(
+        "click",
+        () => {
+
+          document.body.classList.toggle(
+            "light"
+          );
+
+          localStorage.setItem(
+            THEME_KEY,
+            document.body.classList.contains("light")
+              ? "light"
+              : "dark"
+          );
+
+          updateThemeIcon();
+
+        }
+      );
+
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    const menuBtn =
+      $("#menuBtn");
+
+    const navLinks =
+      $("#navLinks");
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        navLinks.classList.toggle(
+          "open"
+        );
 
       }
+    );
 
-      if (
-        event.key.toLowerCase() === "f"
-      ) {
 
-        toggleFullscreen();
+    $$(".nav-link").forEach(link => {
 
-      }
+      link.addEventListener(
+        "click",
+        () => {
 
-      if (
-        event.key.toLowerCase() === "s"
-      ) {
+          navLinks.classList.remove(
+            "open"
+          );
 
-        toggleSound();
-
-      }
-
-      if (
-        event.key === " "
-      ) {
-
-        event.preventDefault();
-
-        toggleAutoPlay();
-
-      }
+        }
+      );
 
     });
 
-    /* =========================================================
-       TOUCH SWIPE
-    ========================================================= */
-
-    let touchStartX = 0;
-
-    document.addEventListener(
-      "touchstart",
-      event => {
-
-        if (!document
-          .getElementById("presentation")
-          .classList.contains("open")) {
-          return;
-        }
-
-        touchStartX =
-          event.changedTouches[0].screenX;
-
-      },
-      { passive: true }
-    );
-
-    document.addEventListener(
-      "touchend",
-      event => {
-
-        if (!document
-          .getElementById("presentation")
-          .classList.contains("open")) {
-          return;
-        }
-
-        const touchEndX =
-          event.changedTouches[0].screenX;
-
-        const difference =
-          touchEndX - touchStartX;
-
-        if (Math.abs(difference) < 60) {
-          return;
-        }
-
-        if (difference < 0) {
-          nextWebsite();
-        } else {
-          previousWebsite();
-        }
-
-      },
-      { passive: true }
-    );
 
     /* =========================================================
-       ADMIN
-    ========================================================= */
+       ACTIVE NAV
+       ========================================================= */
 
-    function openAdmin() {
+    const sections =
+      $$("main section[id]");
 
-      window.location.href =
-        "admin/websites.html";
+    const navItems =
+      $$(".nav-link[href^='#']");
 
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            const id =
+              entry.target.id;
+
+            navItems.forEach(link => {
+
+              link.classList.toggle(
+                "active",
+                link.getAttribute("href") ===
+                "#" + id
+              );
+
+            });
+
+          });
+
+        },
+        {
+          rootMargin:
+            "-25% 0px -65% 0px"
+        }
+      );
+
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+
+    /* =========================================================
+       SALAH ACTIVE TIME
+       ========================================================= */
+
+    function updatePrayerHighlight() {
+
+      const now =
+        new Date();
+
+      const currentMinutes =
+        now.getHours() * 60 +
+        now.getMinutes();
+
+      const prayers = [
+        {
+          name: "Fajr",
+          time: "04:45"
+        },
+        {
+          name: "Dhuhr",
+          time: "12:05"
+        },
+        {
+          name: "Asr",
+          time: "16:15"
+        },
+        {
+          name: "Maghrib",
+          time: "18:00"
+        },
+        {
+          name: "Isha",
+          time: "19:20"
+        }
+      ];
+
+      let activeIndex = 0;
+
+      prayers.forEach(
+        (prayer, index) => {
+
+          const parts =
+            prayer.time.split(":");
+
+          const minutes =
+            Number(parts[0]) * 60 +
+            Number(parts[1]);
+
+          if (
+            currentMinutes >= minutes
+          ) {
+            activeIndex = index;
+          }
+
+        }
+      );
+
+      $$(".prayer")
+        .forEach((element, index) => {
+
+          element.classList.toggle(
+            "active",
+            index === activeIndex
+          );
+
+        });
     }
 
-    /* =========================================================
-       INIT
-    ========================================================= */
 
-    loadWebsites();
-    renderWebsites();
+    /* =========================================================
+       LOCAL STORAGE LIVE UPDATE
+       ========================================================= */
+
+    window.addEventListener(
+      "storage",
+      event => {
+
+        if (
+          event.key ===
+          STORAGE_KEY
+        ) {
+
+          renderShowcase();
+
+        }
+
+      }
+    );
+
+
+    /*
+      If admin and showcase are open in the same browser tab
+      environment, periodically check for changes too.
+    */
+
+    let previousData =
+      localStorage.getItem(
+        STORAGE_KEY
+      );
+
+    setInterval(
+      () => {
+
+        const currentData =
+          localStorage.getItem(
+            STORAGE_KEY
+          );
+
+        if (
+          currentData !==
+          previousData
+        ) {
+
+          previousData =
+            currentData;
+
+          renderShowcase();
+
+        }
+
+      },
+      2500
+    );
+
+
+    /* =========================================================
+       YEAR
+       ========================================================= */
+
+    $("#year").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================================================
+       INITIALIZE
+       ========================================================= */
+
+    loadTheme();
+
+    renderShowcase();
+
+    updatePrayerHighlight();
+
+    setInterval(
+      updatePrayerHighlight,
+      60000
+    );
+
+
+    /* =========================================================
+       PWA SERVICE WORKER
+       ========================================================= */
+
+    if (
+      "serviceWorker" in navigator
+    ) {
+
+      window.addEventListener(
+        "load",
+        () => {
+
+          navigator.serviceWorker
+            .register(
+              "./sw.js"
+            )
+            .catch(
+              error => {
+                console.log(
+                  "PWA service worker:",
+                  error
+                );
+              }
+            );
+
+        }
+      );
+
+    }
 
   </script>
 
